@@ -36,17 +36,47 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <!-- Search Input Option & Order Now CTA -->
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <div class="nav-search-box">
-          <input type="text" placeholder="Search dishes..." aria-label="Search food items">
-          <button type="button" aria-label="Submit search">&#128269;</button>
-        </div>
-        <a href="#menu" class="btn btn-primary btn-sm">Order Now</a>
+      <!-- Order Now CTA Button -->
+      <div>
+        <a href="#menu" class="btn btn-primary btn-sm">&#128722; Order Now</a>
       </div>
 
     </div>
   </header>
+
+  <!-- =========================================================================
+       1b. Dedicated Search & Quick Filter Bar (Positioned Down / Below Navbar)
+       ========================================================================= -->
+  <section class="search-sub-strip" aria-label="Food Search and Quick Filters">
+    <div class="search-strip-inner">
+      
+      <!-- Search Input Group with Category Select & Search Button -->
+      <div class="search-input-group">
+        <span class="search-icon" aria-hidden="true">&#128269;</span>
+        <input type="text" placeholder="Search for pizzas, burgers, biryanis, desserts..." aria-label="Search dishes and meals">
+        <select class="search-category-select" aria-label="Filter by Food Category">
+          <option value="all">All Cuisines</option>
+          <option value="pizza">Wood-Fired Pizza</option>
+          <option value="burger">Gourmet Burgers</option>
+          <option value="indian">Royal Indian</option>
+          <option value="asian">Pan-Asian</option>
+          <option value="dessert">Desserts</option>
+          <option value="drinks">Beverages</option>
+        </select>
+        <button type="button" class="search-submit-btn">Search Food</button>
+      </div>
+
+      <!-- Quick Search Food Category Pills -->
+      <div class="quick-search-tags">
+        <span class="quick-tags-label">Trending:</span>
+        <a href="#menu" class="quick-tag-pill">&#127829; Truffle Pizza</a>
+        <a href="#menu" class="quick-tag-pill">&#127828; Angus Burger</a>
+        <a href="#menu" class="quick-tag-pill">&#127835; Dum Biryani</a>
+        <a href="#menu" class="quick-tag-pill">&#127856; Lava Cake</a>
+      </div>
+
+    </div>
+  </section>
 
   <!-- =========================================================================
        2. Banner Section (CSS Background, Positioning & Overflow Properties)
