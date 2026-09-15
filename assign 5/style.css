@@ -1,0 +1,1050 @@
+/* ==========================================================================
+   SAFFRON & SIZZLE - Gourmet Kitchen & Artisan Bistro
+   Lab Assignment 5: Advanced Responsive Food Ordering Webpage
+   Demonstrating:
+   1. CSS Display Properties: block, inline, inline-block, none, flex, grid
+   2. CSS Box Model: margin, padding, border, border-radius, box-sizing, outline
+   3. Flexbox Properties: flex-direction, justify-content, align-items, flex-wrap, gap
+   4. CSS Grid Layout: grid-template-columns, grid-template-rows, gap, grid-column, grid-row
+   5. CSS Positioning: static, relative, absolute, fixed, sticky, z-index
+   6. Float, Clear & Clearfix: float:left/right, clear:both, .clearfix::after
+   7. Background Properties: background-image, background-size, background-position, background-repeat
+   8. Overflow Properties: overflow:hidden, overflow:auto, overflow:scroll
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Color Palette & Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --primary-amber: #d97706;      /* Saffron Amber */
+  --primary-hover: #b45309;
+  --accent-flame: #e11d48;       /* Sizzle Crimson Flame */
+  --accent-hover: #be123c;
+  --dark-bg: #0f172a;            /* Deep Slate Background */
+  --surface-dark: #1e293b;       /* Charcoal Surface */
+  --light-bg: #f8fafc;           /* Light Off-White Canvas */
+  --surface-light: #ffffff;      /* Pure Card White */
+  --text-primary: #0f172a;       /* Slate Black Header Text */
+  --text-muted: #64748b;         /* Muted Gray Text */
+  --border-color: #e2e8f0;       /* Crisp Border */
+  --border-gold: #f59e0b;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 16px 32px rgba(0,0,0,0.12);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --max-width: 1200px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Reset & Box Model Setup
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;        /* CSS Box Model property */
+  margin: 0;                     /* CSS Box Model property */
+  padding: 0;                    /* CSS Box Model property */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Demonstration of CSS Display Properties (block, inline, inline-block, none, flex, grid)
+   -------------------------------------------------------------------------- */
+/* display: block */
+h1, h2, h3, h4, p, section, article, header, nav, footer {
+  display: block;
+}
+
+/* display: inline */
+.inline-text-highlight {
+  display: inline;
+  color: var(--accent-flame);
+  font-weight: bold;
+}
+
+.price-currency {
+  display: inline;
+  font-size: 0.9em;
+  vertical-align: top;
+  color: var(--primary-amber);
+}
+
+/* display: inline-block */
+.badge-tag,
+.rating-pill,
+.category-pill,
+.diet-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* display: none (Used for hiding elements or responsive toggles) */
+.mobile-hidden-toggle {
+  display: none;
+}
+
+/* Helper Utilities */
+a {
+  color: var(--primary-amber);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-flame);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-subtitle {
+  display: inline-block;
+  color: var(--accent-flame);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background-color: rgba(225, 29, 72, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.5rem;
+}
+
+.section-header h2 {
+  font-size: 2.3rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent-flame);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(225, 29, 72, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--primary-amber);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.btn-outline:hover {
+  background-color: #ffffff;
+  color: var(--text-primary);
+}
+
+.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. Header & Navigation (Flexbox & Display Properties)
+   -------------------------------------------------------------------------- */
+header.site-header {
+  position: sticky;              /* CSS Positioning: Sticky */
+  top: 0;
+  z-index: 1000;                 /* CSS Positioning: Z-Index */
+  background-color: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid rgba(245, 158, 11, 0.4);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-flex-wrapper {
+  display: flex;                 /* Flexbox demonstration */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.brand-logo {
+  display: flex;                 /* Flexbox */
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.logo-flame {
+  font-size: 1.6rem;
+}
+
+.logo-text {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.logo-text span {
+  color: var(--primary-amber);
+}
+
+.logo-sub {
+  display: block;
+  font-size: 0.68rem;
+  color: #94a3b8;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+nav.main-nav {
+  display: flex;                 /* Flexbox */
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav.main-nav a {
+  color: #cbd5e1;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+nav.main-nav a:hover,
+nav.main-nav a.active {
+  color: #ffffff;
+  background-color: rgba(245, 158, 11, 0.2);
+  text-decoration: none;
+}
+
+.nav-search-box {
+  display: flex;                 /* Flexbox */
+  align-items: center;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.85rem;
+}
+
+.nav-search-box input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.88rem;
+  outline: none;
+  width: 130px;
+}
+
+.nav-search-box button {
+  background: transparent;
+  border: none;
+  color: var(--primary-amber);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Banner Section (CSS Backgrounds, Positioning & Overflow)
+   -------------------------------------------------------------------------- */
+.hero-banner-section {
+  position: relative;            /* CSS Positioning: Relative */
+  overflow: hidden;              /* CSS Overflow: Hidden */
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+
+  /* CSS Background Properties */
+  background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.72) 100%), url('images/banner.jpg');
+  background-size: cover;        /* Background property */
+  background-position: center;   /* Background property */
+  background-repeat: no-repeat;  /* Background property */
+  background-color: #0f172a;     /* Fallback color */
+}
+
+.banner-content {
+  position: relative;            /* CSS Positioning */
+  z-index: 2;
+  color: #ffffff;
+  max-width: 720px;
+  padding: 4rem 1.5rem;
+}
+
+.banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(217, 119, 6, 0.3);
+  border: 1px solid var(--border-gold);
+  color: #fef08a;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.banner-content h1 {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.banner-content h1 span {
+  color: var(--primary-amber);
+}
+
+.banner-content p {
+  color: #e2e8f0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.banner-actions {
+  display: flex;                 /* Flexbox */
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   6. Restaurant Information Section (CSS Box Model: Margin, Padding, Border)
+   -------------------------------------------------------------------------- */
+.restaurant-info-section {
+  position: relative;
+  z-index: 10;
+  margin-top: -3.5rem;           /* Box Model: Margin */
+  margin-bottom: 3.5rem;
+}
+
+.info-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  background-color: var(--surface-light);
+  border: 1px solid var(--border-color); /* Box Model: Border */
+  border-radius: var(--radius-lg);       /* Box Model: Border-Radius */
+  padding: 1.75rem;                      /* Box Model: Padding */
+  box-shadow: var(--shadow-lg);
+}
+
+.info-card-item {
+  display: flex;                         /* Flexbox */
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;                      /* Box Model: Padding */
+  border-right: 1px dashed var(--border-color); /* Box Model: Border */
+}
+
+.info-card-item:last-child {
+  border-right: none;
+}
+
+.info-icon-box {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background-color: rgba(245, 158, 11, 0.12);
+  color: var(--primary-amber);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.info-details strong {
+  display: block;
+  font-size: 0.98rem;
+  color: var(--text-primary);
+}
+
+.info-details span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   7. Food Categories Section (Flexbox: flex-direction, justify-content, align-items, flex-wrap, gap)
+   -------------------------------------------------------------------------- */
+.categories-section {
+  padding: 2.5rem 0 3.5rem;
+}
+
+.categories-flex-container {
+  display: flex;                         /* Flexbox property */
+  flex-direction: row;                   /* Flexbox property */
+  justify-content: center;               /* Flexbox property */
+  align-items: center;                   /* Flexbox property */
+  flex-wrap: wrap;                       /* Flexbox property */
+  gap: 1.25rem;                          /* Flexbox property */
+}
+
+.category-flex-card {
+  flex: 1 1 160px;                       /* Flexbox grow, shrink, basis */
+  max-width: 190px;
+  background-color: var(--surface-light);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-flex-card:hover {
+  border-color: var(--primary-amber);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  background-color: #fffbeb;
+}
+
+.category-icon {
+  font-size: 2.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.category-flex-card h3 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.category-count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background-color: #f1f5f9;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+/* --------------------------------------------------------------------------
+   8. Food Menu Section (CSS Grid: grid-template-columns, grid-template-rows, gap, grid-column, grid-row)
+   -------------------------------------------------------------------------- */
+.menu-section {
+  padding: 3rem 0;
+  background-color: #f8fafc;
+}
+
+.menu-grid-container {
+  display: grid;                         /* CSS Grid property */
+  grid-template-columns: repeat(3, 1fr); /* CSS Grid property */
+  grid-auto-rows: minmax(auto, auto);    /* CSS Grid property */
+  gap: 1.75rem;                          /* CSS Grid property */
+}
+
+.menu-item-card {
+  background-color: var(--surface-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;                      /* CSS Overflow: Hidden */
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+/* Grid Spanning Demonstration: Chef's Signature Dish spans 2 columns */
+.menu-item-card.featured-grid-span {
+  grid-column: span 2;                   /* CSS Grid column spanning */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.menu-img-wrapper {
+  position: relative;                    /* CSS Positioning */
+  height: 200px;
+  overflow: hidden;
+}
+
+.menu-item-card.featured-grid-span .menu-img-wrapper {
+  height: 100%;
+  min-height: 260px;
+}
+
+.menu-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.menu-item-card:hover .menu-img-wrapper img {
+  transform: scale(1.06);
+}
+
+.menu-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.menu-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
+}
+
+.menu-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.diet-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.diet-tag.veg {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.diet-tag.non-veg {
+  background-color: #ffe4e6;
+  color: #be123c;
+  border: 1px solid #fca5a5;
+}
+
+/* CSS Overflow Demonstration: auto scroll for long description */
+.menu-desc-overflow {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-height: 60px;
+  overflow-y: auto;                      /* CSS Overflow: Auto */
+  padding-right: 0.4rem;
+  margin: 0.5rem 0 1rem;
+}
+
+/* Custom Scrollbar styling for overflow */
+.menu-desc-overflow::-webkit-scrollbar {
+  width: 4px;
+}
+
+.menu-desc-overflow::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+.menu-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.menu-price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary-amber);
+}
+
+/* --------------------------------------------------------------------------
+   9. Special Offers Section (CSS Positioning: Relative & Absolute)
+   -------------------------------------------------------------------------- */
+.offers-section {
+  padding: 3.5rem 0;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.offer-card {
+  position: relative;                    /* CSS Positioning: Relative container */
+  background-color: var(--surface-light);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.offer-card:hover {
+  border-color: var(--accent-flame);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.offer-img-box {
+  position: relative;                    /* CSS Positioning */
+  height: 220px;
+}
+
+.offer-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Absolute Positioning Badges (Requirement: position: absolute inside position: relative) */
+.offer-badge-absolute {
+  position: absolute;                    /* CSS Positioning: Absolute */
+  top: 1rem;
+  left: 1rem;
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  color: #ffffff;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 5;
+}
+
+.offer-ribbon-tag {
+  position: absolute;                    /* CSS Positioning: Absolute */
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #fef08a;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  z-index: 5;
+}
+
+.offer-body {
+  padding: 1.5rem;
+}
+
+.coupon-code-pill {
+  display: inline-block;
+  background-color: #fef3c7;
+  border: 1px dashed var(--primary-amber);
+  color: #92400e;
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  margin: 0.5rem 0 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Chef's Special & Restaurant News (Float, Clear & Clearfix)
+   -------------------------------------------------------------------------- */
+.chef-special-section {
+  padding: 3.5rem 0;
+  background-color: #1e293b;
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  margin-bottom: 3.5rem;
+}
+
+.chef-special-box {
+  padding: 2.5rem;
+}
+
+/* Float demonstration: Floated image */
+.floated-chef-image {
+  float: left;                           /* CSS Float property */
+  width: 360px;
+  margin-right: 2rem;                    /* Box Model: Margin */
+  margin-bottom: 1.5rem;                 /* Box Model: Margin */
+  border-radius: var(--radius-md);       /* Box Model: Border-Radius */
+  border: 4px solid var(--border-gold);  /* Box Model: Border */
+  box-shadow: var(--shadow-lg);
+}
+
+.chef-editorial-text h2 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.chef-editorial-text h2 span {
+  color: var(--primary-amber);
+}
+
+.chef-editorial-text p {
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.chef-quote {
+  font-style: italic;
+  border-left: 4px solid var(--primary-amber);
+  padding-left: 1rem;
+  margin: 1.25rem 0;
+  color: #fef08a;
+  font-size: 1.02rem;
+}
+
+/* Overflow Scroll demonstration for Chef's Secret Ingredients Box */
+.ingredients-scroll-container {
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid #334155;
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  max-height: 120px;
+  overflow-y: scroll;                    /* CSS Overflow: Scroll */
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* Clearfix demonstration (Ensures parent properly contains floated content) */
+.clearfix::after {
+  content: "";                           /* Pseudo-element for clearfix */
+  display: table;                        /* Clearfix pattern */
+  clear: both;                           /* CSS Clear property */
+}
+
+/* --------------------------------------------------------------------------
+   11. Food Gallery Section (CSS Grid, Borders, Radius & Hover Effects)
+   -------------------------------------------------------------------------- */
+.gallery-section {
+  padding: 3.5rem 0;
+}
+
+.gallery-grid-container {
+  display: grid;                         /* CSS Grid property */
+  grid-template-columns: repeat(4, 1fr); /* CSS Grid */
+  gap: 1.5rem;
+}
+
+.gallery-photo-card {
+  position: relative;                    /* CSS Positioning */
+  overflow: hidden;                      /* CSS Overflow: Hidden */
+  border: 3px solid var(--surface-light);/* Box Model: Border */
+  border-radius: var(--radius-md);       /* Box Model: Border-Radius */
+  box-shadow: var(--shadow-md);
+  height: 240px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-photo-card:hover {
+  border-color: var(--primary-amber);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-photo-card:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-overlay-caption {
+  position: absolute;                    /* CSS Positioning: Absolute */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0.85rem;
+  background: linear-gradient(0deg, rgba(15, 23, 42, 0.92) 0%, transparent 100%);
+  color: #ffffff;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-photo-card:hover .gallery-overlay-caption {
+  transform: translateY(0);
+}
+
+.gallery-overlay-caption h4 {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 0.15rem;
+}
+
+.gallery-overlay-caption span {
+  font-size: 0.78rem;
+  color: var(--primary-amber);
+}
+
+/* --------------------------------------------------------------------------
+   12. Floating / Fixed Sticky Quick Order & Cart Button (CSS Positioning: Fixed)
+   -------------------------------------------------------------------------- */
+.floating-cart-fixed {
+  position: fixed;                       /* CSS Positioning: Fixed */
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;                         /* CSS Positioning: Z-Index */
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  color: #ffffff;
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid #ffffff;
+  transition: all 0.25s ease;
+}
+
+.floating-cart-fixed:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 12px 28px rgba(225, 29, 72, 0.65);
+  color: #ffffff;
+}
+
+.cart-count-badge {
+  background-color: #ffffff;
+  color: var(--accent-flame);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+/* --------------------------------------------------------------------------
+   13. Footer
+   -------------------------------------------------------------------------- */
+footer.site-footer {
+  background-color: var(--dark-bg);
+  color: #94a3b8;
+  padding: 4rem 1.5rem 2rem;
+  margin-top: 4rem;
+  border-top: 3px solid var(--primary-amber);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.footer-brand h3 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-col ul li a {
+  color: #94a3b8;
+  font-size: 0.92rem;
+}
+
+.footer-col ul li a:hover {
+  color: var(--primary-amber);
+  padding-left: 4px;
+}
+
+.footer-bottom-bar {
+  text-align: center;
+  font-size: 0.88rem;
+  margin-top: 2rem;
+  color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
+   14. Responsive Breakpoints (CSS Media Queries)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .menu-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-flex-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav.main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .banner-content {
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+
+  .banner-actions {
+    justify-content: center;
+  }
+
+  .restaurant-info-section {
+    margin-top: -1.5rem;
+  }
+
+  .info-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card-item {
+    border-right: none;
+    border-bottom: 1px dashed var(--border-color);
+  }
+
+  .info-card-item:last-child {
+    border-bottom: none;
+  }
+
+  .menu-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-item-card.featured-grid-span {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+
+  .floated-chef-image {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .floating-cart-fixed {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
