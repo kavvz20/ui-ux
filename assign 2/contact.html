@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Contact | WanderLux Travel Agency</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">WanderLux Travels</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="booking.html">Booking</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="active">About & Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <div class="page-title">
+      <h1>About Us &amp; Contact</h1>
+      <p>Learn more about WanderLux Travel Agency or send us a message.</p>
+    </div>
+
+    <!-- About Us Card -->
+    <section class="card" style="margin-bottom: 2rem;">
+      <h2>About Our Agency</h2>
+      <p style="margin-bottom: 1rem;">
+        WanderLux Travel Agency was established in 2018 with a mission to make international travel easy, affordable, 
+        and memorable. We specialize in custom vacation packages, group tours, honeymoon getaways, and flight/hotel bookings.
+      </p>
+      <p>
+        Our experienced travel consultants help you plan every detail of your trip from start to finish, ensuring 
+        a safe, comfortable, and enjoyable holiday for you and your family.
+      </p>
+    </section>
+
+    <!-- Contact Info & Send Message Grid -->
+    <div class="grid-2">
+      
+      <!-- Contact Information & Social Links -->
+      <div class="card">
+        <h2>Contact Information</h2>
+        <p style="margin-bottom: 1rem;">Feel free to reach out to us via phone, email, or visit our office:</p>
+        
+        <p><strong>Office Address:</strong> 450 Ocean Drive, Suite 12, Marina Bay, CA 90291</p>
+        <p><strong>Phone:</strong> +1 (800) 456-7890</p>
+        <p><strong>Email:</strong> <a href="mailto:info@wanderluxtravels.com">info@wanderluxtravels.com</a></p>
+        <p><strong>Office Hours:</strong> Monday – Saturday: 9:00 AM – 6:00 PM</p>
+
+        <h3 style="margin-top: 1.5rem;">Follow Us on Social Media</h3>
+        <ul class="social-links">
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+          <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+        </ul>
+      </div>
+
+      <!-- Quick Message Form -->
+      <div class="card">
+        <h2>Send Us a Message</h2>
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="contactName">Your Name *</label>
+            <input type="text" id="contactName" name="contactName" placeholder="Enter your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactEmail">Email Address *</label>
+            <input type="email" id="contactEmail" name="contactEmail" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactSubject">Subject *</label>
+            <select id="contactSubject" name="contactSubject" required>
+              <option value="" disabled selected>-- Select Subject --</option>
+              <option value="inquiry">General Inquiry</option>
+              <option value="package">Package Information</option>
+              <option value="custom">Custom Tour Request</option>
+              <option value="feedback">Feedback</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Message *</label>
+            <textarea id="contactMessage" name="contactMessage" rows="4" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 WanderLux Travel Agency. All rights reserved.</p>
+    <p>Contact us: <a href="mailto:info@wanderluxtravels.com">info@wanderluxtravels.com</a> | Phone: +1 (800) 456-7890</p>
+  </footer>
+
+</body>
+</html>

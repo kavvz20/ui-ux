@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Booking | WanderLux Travel Agency</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">WanderLux Travels</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <a href="booking.html" class="active">Booking</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">About & Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <div class="page-title">
+      <h1>Tour Booking Form</h1>
+      <p>Please fill out the form below to reserve your travel package.</p>
+    </div>
+
+    <!-- Booking Form Container -->
+    <div class="form-container">
+      <form action="#" method="post">
+        
+        <!-- Traveler Full Name -->
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+
+        <!-- Email Address -->
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+
+        <!-- Destination Dropdown -->
+        <div class="form-group">
+          <label for="destination">Select Destination *</label>
+          <select id="destination" name="destination" required>
+            <option value="" disabled selected>-- Select a Destination --</option>
+            <option value="santorini">Santorini, Greece</option>
+            <option value="swiss-alps">Swiss Alps, Switzerland</option>
+            <option value="bali">Bali, Indonesia</option>
+            <option value="kyoto">Kyoto &amp; Tokyo, Japan</option>
+            <option value="rome">Rome, Italy</option>
+            <option value="maldives">Maldives</option>
+          </select>
+        </div>
+
+        <!-- Package Selection Dropdown -->
+        <div class="form-group">
+          <label for="package">Select Package Tier *</label>
+          <select id="package" name="package" required>
+            <option value="" disabled selected>-- Select a Package Tier --</option>
+            <option value="standard">Standard Package</option>
+            <option value="deluxe">Deluxe Package</option>
+            <option value="luxury">Luxury Package</option>
+          </select>
+        </div>
+
+        <!-- Travel Dates (Grid) -->
+        <div class="grid-2" style="margin-bottom: 0;">
+          <div class="form-group">
+            <label for="departureDate">Departure Date *</label>
+            <input type="date" id="departureDate" name="departureDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="returnDate">Return Date *</label>
+            <input type="date" id="returnDate" name="returnDate" required>
+          </div>
+        </div>
+
+        <!-- Number of Guests -->
+        <div class="form-group">
+          <label for="guests">Number of Travelers *</label>
+          <input type="number" id="guests" name="guests" min="1" max="20" value="2" required>
+        </div>
+
+        <!-- Accommodation Type (Radio Buttons) -->
+        <div class="form-group">
+          <label>Accommodation Preference:</label>
+          <div class="radio-group">
+            <label><input type="radio" name="hotelType" value="hotel" checked> Standard Hotel</label>
+            <label><input type="radio" name="hotelType" value="resort"> 5-Star Resort</label>
+            <label><input type="radio" name="hotelType" value="villa"> Private Villa</label>
+          </div>
+        </div>
+
+        <!-- Meal Plan Dropdown -->
+        <div class="form-group">
+          <label for="meal">Meal Preference:</label>
+          <select id="meal" name="meal">
+            <option value="breakfast">Breakfast Included</option>
+            <option value="half-board">Half Board (Breakfast + Dinner)</option>
+            <option value="all-inclusive">All-Inclusive (All Meals &amp; Drinks)</option>
+            <option value="vegetarian">Vegetarian / Vegan Special</option>
+          </select>
+        </div>
+
+        <!-- Special Requests Textarea -->
+        <div class="form-group">
+          <label for="requests">Special Requests / Notes:</label>
+          <textarea id="requests" name="requests" rows="4" placeholder="Any specific requirements, dietary needs, or flight preferences..."></textarea>
+        </div>
+
+        <!-- Form Buttons -->
+        <div class="form-buttons">
+          <button type="submit" class="btn">Submit Booking</button>
+          <button type="reset" class="btn btn-reset">Reset Form</button>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 WanderLux Travel Agency. All rights reserved.</p>
+    <p>Contact us: <a href="mailto:info@wanderluxtravels.com">info@wanderluxtravels.com</a> | Phone: +1 (800) 456-7890</p>
+  </footer>
+
+</body>
+</html>
