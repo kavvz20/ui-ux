@@ -1,0 +1,656 @@
+/* ==========================================================================
+   INNOVIZ 2026 - College Event Management Website
+   Assignment 4: Advanced Styling & Multimedia Features
+   Demonstrating:
+   1. CSS Selectors (Element, Class, ID, Attribute, Pseudo-classes, Pseudo-elements)
+   2. CSS Box Model (Margin, Padding, Border, Box-Sizing)
+   3. Flexbox Layouts for Navigation & Key Sections
+   4. CSS Grid for Responsive Photo Gallery & Layout Cards
+   5. Embedded Video & Audio Styling
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties / Theme Variables
+   -------------------------------------------------------------------------- */
+:root {
+  --primary: #4f46e5;          /* Electric Indigo */
+  --primary-hover: #4338ca;
+  --accent: #f97316;           /* Tech Orange */
+  --accent-hover: #ea580c;
+  --bg: #f8fafc;               /* Crisp Slate Canvas */
+  --surface: #ffffff;          /* White Card Surface */
+  --text: #0f172a;             /* Dark Slate */
+  --muted: #475569;            /* Slate Gray */
+  --border: #e2e8f0;           /* Soft Border */
+  --border-focus: #4f46e5;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Box Model Reset & Universal Rules (Element Selectors & Pseudo-elements)
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;       /* Box Model: Border-Box */
+  margin: 0;                    /* Box Model: Margin */
+  padding: 0;                   /* Box Model: Padding */
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Pseudo-element placeholder styling */
+::placeholder {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. Header & Navigation (ID Selector, Flexbox & Pseudo-Classes)
+   -------------------------------------------------------------------------- */
+#main-header {
+  background-color: #0f172a;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid var(--primary); /* Box Model: Border */
+}
+
+.nav-container {
+  max-width: 1150px;
+  margin: 0 auto;               /* Box Model: Margin */
+  padding: 0.9rem 1.5rem;        /* Box Model: Padding */
+  display: flex;                /* Flexbox */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+nav {
+  display: flex;                /* Flexbox */
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Element + Class + Pseudo-Class Selectors */
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.45rem 0.85rem;      /* Box Model: Padding */
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+}
+
+nav a:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+nav a:active {
+  transform: scale(0.97);
+}
+
+nav a.active {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   4. Page Container & Typography Structure
+   -------------------------------------------------------------------------- */
+main.container {
+  max-width: 1100px;
+  margin: 2rem auto;            /* Box Model: Margin */
+  padding: 0 1.5rem;             /* Box Model: Padding */
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2.25rem;       /* Box Model: Margin */
+}
+
+.page-header h1 {
+  font-size: 2.2rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+/* Pseudo-element for decorative section underline */
+.page-header h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.page-header p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 750px;
+  margin: 0.75rem auto 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. Buttons (Class Selectors, Pseudo-Classes & Box Model)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;         /* Flexbox */
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 0.7rem 1.4rem;        /* Box Model: Padding */
+  border: 1px solid transparent;/* Box Model: Border */
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.btn-accent {
+  background-color: var(--accent);
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  background-color: #64748b;
+}
+
+.btn-secondary:hover {
+  background-color: #475569;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+/* Attribute selector for submit & reset buttons */
+button[type="submit"] {
+  background-color: var(--accent);
+}
+
+button[type="submit"]:hover {
+  background-color: var(--accent-hover);
+}
+
+button[type="reset"] {
+  background-color: #64748b;
+  color: #ffffff;
+}
+
+button[type="reset"]:hover {
+  background-color: #475569;
+}
+
+/* --------------------------------------------------------------------------
+   6. Cards & Grid Layouts (CSS Grid & Flexbox)
+   -------------------------------------------------------------------------- */
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;              /* Box Model: Padding */
+  margin-bottom: 1.75rem;        /* Box Model: Margin */
+  box-shadow: var(--shadow-sm);
+}
+
+.grid-2 {
+  display: grid;                /* CSS Grid */
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.grid-3 {
+  display: grid;                /* CSS Grid */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Hero Banner (Home Page)
+   -------------------------------------------------------------------------- */
+.hero {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-banner img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.hero-content {
+  padding: 2.25rem;              /* Box Model: Padding */
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.hero-meta {
+  display: flex;                /* Flexbox */
+  justify-content: center;
+  gap: 1.5rem;
+  font-weight: bold;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.hero-meta span {
+  color: var(--accent);
+}
+
+.hero-actions {
+  display: flex;                /* Flexbox */
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. Multimedia Sections: Video & Audio Styling (Assign 4 Requirements)
+   -------------------------------------------------------------------------- */
+#video-showcase,
+#audio-guide {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;              /* Box Model: Padding */
+  margin-bottom: 2.5rem;
+}
+
+.media-player-wrapper {
+  max-width: 800px;
+  margin: 1.25rem auto 0;
+  text-align: center;
+}
+
+video {
+  width: 100%;
+  max-height: 420px;
+  border-radius: var(--radius-sm);
+  background-color: #0f172a;
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+
+audio {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 0.5rem;
+}
+
+.audio-box {
+  background-color: #e0e7ff;
+  border-left: 5px solid var(--primary);
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. Events Page (Ordered List & Pseudo-classes)
+   -------------------------------------------------------------------------- */
+ol.events-list {
+  list-style: decimal inside;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+ol.events-list > li {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+ol.events-list > li:hover {
+  transform: translateY(-2px);
+  border-left-color: var(--accent);
+}
+
+ul.event-meta-list {
+  list-style: square inside;
+  margin: 0.75rem 0 1.25rem;
+}
+
+ul.event-meta-list li {
+  margin-bottom: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Schedule & Results Tables (Attribute & Pseudo-Class Selectors)
+   -------------------------------------------------------------------------- */
+.table-responsive {
+  overflow-x: auto;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 750px;
+}
+
+table th,
+table td {
+  padding: 1rem 1.1rem;          /* Box Model: Padding */
+  border: 1px solid var(--border);/* Box Model: Border */
+  text-align: left;
+}
+
+table th {
+  background-color: #0f172a;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Pseudo-class: nth-child for zebra striping */
+table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+table tbody tr:hover {
+  background-color: #eef2ff;
+}
+
+table td.highlight-slot {
+  background-color: #fef3c7;
+  font-weight: bold;
+  text-align: center;
+  color: #92400e;
+}
+
+/* --------------------------------------------------------------------------
+   11. Registration Form (Attribute Selectors, Pseudo-Classes & Focus)
+   -------------------------------------------------------------------------- */
+#registration-form {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2.25rem;              /* Box Model: Padding */
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;       /* Box Model: Margin */
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.form-group label span.required {
+  color: #dc2626;
+}
+
+/* Attribute Selectors for Form Controls */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;       /* Box Model: Padding */
+  border: 1px solid #cbd5e1;     /* Box Model: Border */
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Pseudo-class: focus state */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.radio-group,
+.checkbox-group {
+  display: flex;                /* Flexbox */
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-top: 0.35rem;
+}
+
+.radio-group label,
+.checkbox-group label {
+  font-weight: normal;
+  cursor: pointer;
+  display: inline-flex;         /* Flexbox */
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Pseudo-class: checked */
+input[type="radio"]:checked + span,
+input[type="checkbox"]:checked + span {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.form-actions {
+  display: flex;                /* Flexbox */
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsive Gallery (CSS Grid Requirement - Assign 4)
+   -------------------------------------------------------------------------- */
+.gallery-grid {
+  display: grid;                /* Responsive CSS Grid */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+figure.gallery-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+figure.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+figure.gallery-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+figcaption {
+  padding: 1.2rem;               /* Box Model: Padding */
+}
+
+figcaption h3 {
+  color: var(--primary);
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+figcaption p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   13. Social Links (Attribute Selector a[target="_blank"] & Flexbox)
+   -------------------------------------------------------------------------- */
+.social-links {
+  list-style: none;
+  display: flex;                /* Flexbox */
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Attribute selector for external links */
+a[target="_blank"] {
+  display: inline-block;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 0.5rem 1rem;          /* Box Model: Padding */
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+a[target="_blank"]:hover {
+  background-color: var(--primary);
+}
+
+/* --------------------------------------------------------------------------
+   14. FAQ Component (HTML5 Details & Summary)
+   -------------------------------------------------------------------------- */
+details.faq-item {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;         /* Box Model: Padding */
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+details.faq-item summary {
+  font-weight: bold;
+  color: var(--primary);
+  outline: none;
+}
+
+details.faq-item p {
+  margin-top: 0.75rem;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   15. Universal Footer (Flexbox & Box Model)
+   -------------------------------------------------------------------------- */
+footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 2.5rem 1.5rem 1.5rem; /* Box Model: Padding */
+  text-align: center;
+  border-top: 1px solid #1e293b;
+  margin-top: 3.5rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: #818cf8;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   16. Media Queries for Mobile and Tablet Devices
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;     /* Flexbox direction change */
+    gap: 0.8rem;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #registration-form {
+    padding: 1.25rem;
+  }
+}
